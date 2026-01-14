@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "uuid" DROP NOT NULL,
+ALTER COLUMN "createdAt" SET DEFAULT NOW();

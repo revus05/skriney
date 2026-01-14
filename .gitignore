@@ -1,0 +1,23 @@
+# dependencies
+/telegram-bot/node_modules
+/frontend/node_modules
+
+# next.js
+/frontend/.next/
+
+# env files
+.env*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+#ide
+.idea
+/backend/backend.iml
+
+#uploads
+/backend/uploads
+
+#target
+/backend/target

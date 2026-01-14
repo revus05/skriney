@@ -1,0 +1,1 @@
+export { useUpdateThemeSubmit } from './useUpdateThemeSubmit'

@@ -1,0 +1,193 @@
+{
+  "header": {
+    "search": "Поиск",
+    "userActions": {
+      "profile": "Профиль",
+      "logout": "Выйти"
+    }
+  },
+  "sidebar": {
+    "home": "Главная",
+    "transaction": "Транзакции",
+    "statistics": "Статистика",
+    "categories": "Категории",
+    "bankAccounts": "Счета",
+    "goals": "Цели и лимиты",
+    "settings": "Настройки"
+  },
+  "home": {
+    "totalBalance": {
+      "balance": "Баланс",
+      "income": "Получено",
+      "outcome": "Потрачено"
+    },
+    "categories": {
+      "title": "Категории за 30 дней"
+    },
+    "goals": {
+      "title": "Цели"
+    }
+  },
+  "profile": {
+    "bankAccounts": "Счета",
+    "updateImage": {
+      "sectionTitle": "Обновить изображение профиля:",
+      "dragHere": "Выберите или перетащите изображение сюда",
+      "releaseHere": "Отпустите, чтобы загрузить",
+      "update": "Обновить"
+    }
+  },
+  "categories": {
+    "title": "Категории транзакций",
+    "delete": "Удалить",
+    "update": {
+      "sectionTitle": "Редактировать категорию:",
+      "title": "Название",
+      "update": "Редактировать"
+    },
+    "creation": {
+      "sectionTitle": "Создать категорию:",
+      "title": "Название",
+      "create": "Создать"
+    },
+    "confirmDelete": {
+      "title": "Подтвердите удаление категории",
+      "cancel": "Отмена",
+      "delete": "Удалить"
+    },
+    "validation": {
+      "titleRequired": "Название категории обязательно"
+    }
+  },
+  "bankAccounts": {
+    "title": "Счета",
+    "delete": "Удалить",
+    "creation": {
+      "sectionTitle": "Создать счет:",
+      "title": "Название",
+      "initialBalance": "Начальный баланс",
+      "currency": "Валюта",
+      "create": "Создать"
+    },
+    "update": {
+      "sectionTitle": "Редактировать счет:",
+      "title": "Название",
+      "update": "Редактировать"
+    },
+    "confirmDelete": {
+      "title": "Подтвердите удаление счета",
+      "cancel": "Отмена",
+      "delete": "Удалить"
+    },
+    "validation": {
+      "titleRequired": "Название счета обязательно",
+      "initialBalanceMustBeNumber": "Начальный баланс должен быть числом",
+      "currencyRequired": "Валюта обязательна"
+    }
+  },
+  "transactions": {
+    "title": "Транзакции",
+    "delete": "Удалить",
+    "noCategory": "Нет категории",
+    "noBankAccount": "Нет счета",
+    "noTransactionsYet": "У вас пока нет транзакций",
+    "howToCreateTransaction": "Чтобы создать транзакцию, нажмите на \"+\" в заголовке",
+    "creation": {
+      "sectionTitle": "Создать транзакцию:",
+      "amount": "Сумма",
+      "currency": "Валюта",
+      "bankAccount": "Счет",
+      "category": "Категория",
+      "description": "Описание",
+      "create": "Создать"
+    },
+    "update": {
+      "sectionTitle": "Редактировать транзакцию:",
+      "amount": "Сумма",
+      "currency": "Валюта",
+      "bankAccount": "Счет",
+      "category": "Категория",
+      "description": "Описание",
+      "update": "Редактировать"
+    },
+    "confirmDelete": {
+      "title": "Подтвердите удаление транзакции",
+      "cancel": "Отмена",
+      "delete": "Удалить"
+    },
+    "validation": {
+      "amountRequired": "Сумма обязательна",
+      "amountMustBeNumber": "Сумма должна быть числом",
+      "amountCantBeZero": "Сумма не может быть равна 0",
+      "categoryRequired": "Категория обязательна",
+      "bankAccountRequired": "Счет обязателен",
+      "currencyRequired": "Валюта обязательна",
+      "descriptionMaxLength128": "Максимальная длина 128 символов"
+    }
+  },
+  "settings": {
+    "title": "Настройки",
+    "list": {
+      "theme": "Тема",
+      "defaultCurrency": "Валюта по умолчанию",
+      "defaultCategory": "Категория по умолчанию",
+      "defaultBankAccount": "Счет по умолчанию",
+      "connectTelegram": {
+        "title": "Привязать телеграм",
+        "button": "Привязать",
+        "connected": "Успешно привязан"
+      },
+      "language": "Язык",
+      "animationEnabled": "Включить анимации"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Войти в аккаунт:",
+      "email": "Email",
+      "password": "Пароль",
+      "createAccount": "Создать новый аккаунт",
+      "submit": "Войти"
+    },
+    "signUp": {
+      "title": "Создать новый аккаунт:",
+      "username": "Имя пользователя",
+      "email": "Email",
+      "password": "Пароль",
+      "repeatPassword": "Повторите пароль",
+      "signIn": "Войти в существующий аккаунт",
+      "submit": "Зарегистрироваться"
+    },
+    "validation": {
+      "emailRequired": "Email пользователя обязателен",
+      "usernameRequired": "Имя пользователя обязательно",
+      "passwordMinLength": "Минимальная длина пароля 8 символов",
+      "passwordMaxLength": "Максимальная длина пароля 64 символа",
+      "passwordsNotMatch": "Пароли не совпадают"
+    }
+  },
+  "statistics": {
+    "title": "Статистика",
+    "transactionDynamic": "Динамика транзакций",
+    "period": {
+      "title": "Выберите период",
+      "LAST_7_DAYS": "7 дней",
+      "LAST_30_DAYS": "30 дней",
+      "LAST_3_MONTHS": "3 месяца",
+      "LAST_1_YEAR": "1 год",
+      "ALL_TIME": "Максимум"
+    },
+    "bankAccount": {
+      "title": "Выберите счет",
+      "all": "Все"
+    },
+    "chartType": {
+      "balance": "Баланс",
+      "incomeAndExpenses": "Доходы и расходы"
+    },
+    "incomeTitle": "Доходы",
+    "expensesTitle": "Расходы",
+    "noExpensesYet": "Нет расходов",
+    "noIncomeYet": "Нет доходов"
+  }
+}

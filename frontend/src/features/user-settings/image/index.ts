@@ -1,0 +1,1 @@
+export { UpdatableUserImage } from './ui'

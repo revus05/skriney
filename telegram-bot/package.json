@@ -1,0 +1,35 @@
+{
+  "name": "telegram-bot",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon",
+    "start": "bun run src/index.ts",
+    "gen:proto": "protoc --plugin=protoc-gen-ts_proto=\".\\\\node_modules\\\\.bin\\\\protoc-gen-ts_proto.exe\" --ts_proto_out=\".\" src/shared/proto/*.proto",
+    "gen:prisma": "prisma generate",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "@types/bun": "latest",
+    "nodemon": "^3.1.10",
+    "ts-proto": "^2.7.7",
+    "eslint": "^9.34.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "typescript-eslint": "^8.41.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0"
+  },
+  "dependencies": {
+    "@grammyjs/conversations": "^2.1.0",
+    "@grammyjs/hydrate": "^1.6.0",
+    "@grpc/grpc-js": "^1.13.4",
+    "@grpc/proto-loader": "^0.8.0",
+    "@prisma/client": "^6.15.0",
+    "google-protobuf": "^4.0.0",
+    "grammy": "^1.38.1",
+    "prisma": "^6.15.0"
+  }
+}

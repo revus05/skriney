@@ -1,0 +1,1 @@
+export { withHomeLayout } from './ui'

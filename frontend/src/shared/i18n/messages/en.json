@@ -1,0 +1,191 @@
+{
+  "header": {
+    "search": "Search",
+    "userActions": {
+      "profile": "Profile",
+      "logout": "Log out"
+    }
+  },
+  "sidebar": {
+    "home": "Home",
+    "transaction": "Transactions",
+    "statistics": "Statistics",
+    "categories": "Categories",
+    "bankAccounts": "Bank accounts",
+    "goals": "Goals and limits",
+    "settings": "Settings"
+  },
+  "home": {
+    "totalBalance": {
+      "balance": "Balance",
+      "income": "Income",
+      "outcome": "Expenses"
+    },
+    "categories": {
+      "title": "Categories for 30 days"
+    },
+    "goals": {
+      "title": "Goals"
+    }
+  },
+  "profile": {
+    "bankAccounts": "Bank accounts",
+    "updateImage": {
+      "sectionTitle": "Update Profile Picture:",
+      "dragHere": "Choose or drag an image here",
+      "releaseHere": "Release to upload",
+      "update": "Update"
+    }
+  },
+  "categories": {
+    "title": "Transaction categories",
+    "delete": "Delete",
+    "update": {
+      "sectionTitle": "Update category:",
+      "title": "Title",
+      "update": "Update"
+    },
+    "creation": {
+      "sectionTitle": "Create category:",
+      "title": "Title",
+      "create": "Create"
+    },
+    "confirmDelete": {
+      "title": "Confirm category delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
+  },
+  "bankAccounts": {
+    "title": "Bank accounts",
+    "delete": "Delete",
+    "creation": {
+      "sectionTitle": "Create bank account:",
+      "title": "Title",
+      "initialBalance": "Initial balance",
+      "currency": "Currency",
+      "create": "Create"
+    },
+    "update": {
+      "sectionTitle": "Update bank account:",
+      "title": "Title",
+      "currency": "Currency",
+      "update": "Update"
+    },
+    "confirmDelete": {
+      "title": "Confirm bank account delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "validation": {
+      "titleRequired": "Bank account title required",
+      "initialBalanceMustBeNumber": "Initial balance must be a number",
+      "currencyRequired": "Currency required"
+    }
+  },
+  "transactions": {
+    "title": "Transactions",
+    "delete": "Delete",
+    "noCategory": "No category",
+    "noBankAccount": "No bank account",
+    "noTransactionsYet": "You don't have transactions yet",
+    "howToCreateTransaction": "To create transaction click \"+\" in headline",
+    "creation": {
+      "sectionTitle": "Create transaction:",
+      "amount": "Amount",
+      "currency": "Currency",
+      "bankAccount": "Bank account",
+      "category": "Category",
+      "description": "Description",
+      "create": "Create"
+    },
+    "update": {
+      "sectionTitle": "Update transaction:",
+      "amount": "Amount",
+      "currency": "Currency",
+      "bankAccount": "Bank account",
+      "category": "Category",
+      "description": "Description",
+      "update": "Update"
+    },
+    "confirmDelete": {
+      "title": "Confirm transaction delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "validation": {
+      "amountRequired": "Amount required",
+      "amountMustBeNumber": "Amount must be a number",
+      "amountCantBeZero": "Amount can't be 0",
+      "categoryRequired": "Category required",
+      "bankAccountRequired": "Bank account required",
+      "currencyRequired": "Currency required",
+      "descriptionMaxLength128": "Max length is 128"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "list": {
+      "theme": "Theme",
+      "defaultCurrency": "Default currency",
+      "defaultCategory": "Default category",
+      "defaultBankAccount": "Default bank account",
+      "connectTelegram": {
+        "title": "Connect Telegram",
+        "button": "Connect",
+        "connected": "Connected successfully"
+      },
+      "language": "Language",
+      "animationEnabled": "Animation enabled"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in to account:",
+      "email": "Email",
+      "password": "Password",
+      "createAccount": "Create new account",
+      "submit": "Sign in"
+    },
+    "signUp": {
+      "title": "Create new account:",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "repeatPassword": "Repeat password",
+      "signIn": "Sign in to existing account",
+      "submit": "Sign up"
+    },
+    "validation": {
+      "emailRequired": "User email is required",
+      "usernameRequired": "Username is required",
+      "passwordMinLength": "Minimum password length is 8 characters",
+      "passwordMaxLength": "Maximum password length is 64 characters",
+      "passwordsNotMatch": "Passwords do not match"
+    }
+  },
+  "statistics": {
+    "title": "Statistics",
+    "transactionDynamic": "Transaction dynamic",
+    "period": {
+      "title": "Select period",
+      "LAST_7_DAYS": "7 days",
+      "LAST_30_DAYS": "30 days",
+      "LAST_3_MONTHS": "3 months",
+      "LAST_1_YEAR": "1 year",
+      "ALL_TIME": "Maximum"
+    },
+    "bankAccount": {
+      "title": "Select bank account",
+      "all": "All"
+    },
+    "chartType": {
+      "balance": "Balance",
+      "incomeAndExpenses": "Income and expenses"
+    },
+    "incomeTitle": "Income",
+    "expensesTitle": "Expenses",
+    "noExpensesYet": "No expenses yet",
+    "noIncomeYet": "No income yet"
+  }
+}

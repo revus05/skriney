@@ -1,0 +1,345 @@
+@import "tailwindcss";
+@plugin '../src/app/hero.ts';
+
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+
+@theme  {
+    --color-bg-semantic-success-subtle: var(--green-20-100);
+    --color-bg-semantic-success-bold: var(--green-60-100);
+    --color-bg-semantic-warning-subtle: var(--yellow-20-100);
+    --color-bg-semantic-warning-bold: var(--yellow-70-100);
+    --color-bg-semantic-error-subtle: var(--red-20-100);
+    --color-bg-semantic-error-bold: var(--red-70-100);
+    --color-bg-semantic-info-subtle: var(--blue-20-100);
+    --color-bg-semantic-info-bold: var(--blue-80-100);
+    --color-bg-neutral-primary: var(--greyscale-10-100);
+    --color-bg-neutral-secondary: var(--greyscale-20-100);
+    --color-bg-neutral-tertiary: var(--greyscale-30-100);
+    --color-bg-neutral-disabled: var(--greyscale-50-100);
+    --color-bg-neutral-inverse-primary: var(--greyscale-100-100);
+    --color-bg-neutral-inverse-secondary: var(--greyscale-80-100);
+    --color-bg-neutral-inverse-tertiary: var(--greyscale-70-100);
+    --color-bg-brand-primary: var(--brown-60-100);
+    --color-bg-brand-secondary: var(--brown-30-100);
+    --color-bg-brand-tertiary: var(--brown-20-100);
+    --color-bg-transp-semantic-success-subtle: var(--green-20-70);
+    --color-bg-transp-semantic-success-bold: var(--green-80-70);
+    --color-bg-transp-semantic-warning-subtle: var(--yellow-20-70);
+    --color-bg-transp-semantic-warning-bold: var(--yellow-70-70);
+    --color-bg-transp-semantic-error-subtle: var(--red-20-70);
+    --color-bg-transp-semantic-error-bold: var(--red-70-70);
+    --color-bg-transp-semantic-info-subtle: var(--blue-20-70);
+    --color-bg-transp-semantic-info-bold: var(--blue-80-70);
+    --color-bg-transp-neutral-primary: var(--greyscale-10-70);
+    --color-bg-transp-neutral-secondary: var(--greyscale-20-70);
+    --color-bg-transp-neutral-tertiary: var(--greyscale-30-70);
+    --color-bg-transp-neutral-disabled: var(--greyscale-50-70);
+    --color-bg-transp-neutral-inverse-primary: var(--greyscale-100-70);
+    --color-bg-transp-neutral-inverse-secondary: var(--greyscale-80-70);
+    --color-bg-transp-neutral-inverse-tertiary: var(--greyscale-70-70);
+    --color-bg-transp-brand-primary: var(--brown-60-70);
+    --color-bg-transp-brand-secondary: var(--brown-30-70);
+    --color-bg-transp-brand-tertiary: var(--brown-20-70);
+    --color-text-brand-primary: var(--brown-90-100);
+    --color-text-semantic-success-primary: var(--green-80-100);
+    --color-text-semantic-success-inverse: var(--green-20-100);
+    --color-text-brand-inverse: var(--brown-10-100);
+    --color-text-neutral-primary: var(--greyscale-100-100);
+    --color-text-neutral-inverse-primary: var(--tech-0-100);
+    --color-text-neutral-inverse-secondary: var(--greyscale-10-100);
+    --color-text-neutral-inverse-tertiary: var(--greyscale-20-100);
+    --color-text-semantic-warning-primary: var(--yellow-100-100);
+    --color-text-semantic-warning-inverse: var(--yellow-20-100);
+    --color-text-semantic-error-primary: var(--red-80-100);
+    --color-text-semantic-error-inverse: var(--red-20-100);
+    --color-text-semantic-info-primary: var(--blue-90-100);
+    --color-text-semantic-info-inverse: var(--blue-20-100);
+    --color-text-neutral-secondary: var(--greyscale-90-100);
+    --color-text-neutral-tertiary: var(--greyscale-80-100);
+    --color-icon-brand-primary: var(--brown-90-100);
+    --color-text-neutral-disabled: var(--tech-0-100);
+    --color-icon-semantic-success-primary: var(--green-80-100);
+    --color-icon-semantic-success-inverse: var(--green-20-100);
+    --color-icon-brand-inverse: var(--brown-10-100);
+    --color-icon-neutral-primary: var(--greyscale-100-100);
+    --color-icon-neutral-inverse-primary: var(--tech-0-100);
+    --color-icon-neutral-inverse-secondary: var(--greyscale-10-100);
+    --color-icon-neutral-inverse-tertiary: var(--greyscale-20-100);
+    --color-icon-semantic-warning-primary: var(--yellow-100-100);
+    --color-icon-semantic-warning-inverse: var(--yellow-20-100);
+    --color-icon-semantic-error-primary: var(--red-80-100);
+    --color-icon-semantic-error-inverse: var(--red-20-100);
+    --color-icon-semantic-info-primary: var(--blue-90-100);
+    --color-icon-semantic-info-inverse: var(--blue-20-100);
+    --color-icon-neutral-secondary: var(--greyscale-90-100);
+    --color-icon-neutral-tertiary: var(--greyscale-80-100);
+    --color-border-brand-primary: var(--brown-50-100);
+    --color-border-semantic-success-primary: var(--green-60-100);
+    --color-border-semantic-success-inverse: var(--green-40-100);
+    --color-border-brand-inverse: var(--brown-30-100);
+    --color-border-neutral-primary: var(--greyscale-50-50);
+    --color-border-neutral-inverse-primary: var(--greyscale-80-100);
+    --color-border-neutral-inverse-secondary: var(--greyscale-60-100);
+    --color-border-semantic-warning-primary: var(--yellow-60-100);
+    --color-border-semantic-warning-inverse: var(--yellow-40-100);
+    --color-border-semantic-error-primary: var(--red-50-100);
+    --color-border-semantic-error-inverse: var(--red-40-100);
+    --color-border-semantic-info-primary: var(--blue-50-100);
+    --color-border-semantic-info-inverse: var(--blue-30-100);
+    --color-border-neutral-secondary: var(--greyscale-30-70);
+    --color-icon-neutral-disabled: var(--tech-0-100);
+
+
+    --shadow-sm: 0px 0px 5px 0px rgba(0, 0, 0, 0.05),
+    0px 2px 10px 0px rgba(0, 0, 0, 0.2),
+    inset 0px 0px 1px 0px rgba(255, 255, 255, 0.15);
+
+    --animate-fly-circle: fly-circle 150s linear infinite;
+    --animate-gradient-pulse: gradient-pulse 150s ease-in-out infinite;
+
+    --color-primary: var(--greyscale-10-100);
+}
+
+:root {
+    --brown-10-100: hsla(30, 100%, 98%, 1);
+    --brown-20-70: hsla(29, 100%, 91%, 0.7);
+    --brown-20-100: hsla(29, 100%, 91%, 1);
+    --brown-30-70: hsla(29, 100%, 84%, 0.7);
+    --brown-30-100: hsla(29, 100%, 84%, 1);
+    --brown-50-100: hsla(29, 59%, 65%, 1);
+    --brown-60-70: hsla(29, 43%, 55%, 0.7);
+    --brown-60-100: hsla(29, 43%, 55%, 1);
+    --brown-90-100: hsla(29, 46%, 27%, 1);
+    --green-20-70: hsla(79, 100%, 95%, 0.7);
+    --green-20-100: hsla(79, 100%, 95%, 1);
+    --green-40-100: hsla(80, 51%, 82%, 1);
+    --green-60-100: hsla(80, 23%, 63%, 1);
+    --green-80-70: hsla(80, 16%, 44%, 0.7);
+    --green-80-100: hsla(80, 16%, 44%, 1);
+    --yellow-20-70: hsla(53, 100%, 91%, 0.7);
+    --yellow-20-100: hsla(53, 100%, 91%, 1);
+    --yellow-40-100: hsla(53, 96%, 78%, 1);
+    --yellow-60-100: hsla(53, 44%, 58%, 1);
+    --yellow-70-70: hsla(53, 34%, 48%, 0.7);
+    --yellow-70-100: hsla(53, 34%, 48%, 1);
+    --yellow-100-100: hsla(53, 42%, 22%, 1);
+    --blue-20-70: hsla(229, 100%, 93%, 0.7);
+    --blue-20-100: hsla(229, 100%, 93%, 1);
+    --blue-30-100: hsla(230, 100%, 88%, 1);
+    --blue-50-100: hsla(230, 42%, 72%, 1);
+    --blue-80-70: hsla(231, 20%, 45%, 0.7);
+    --blue-80-100: hsla(231, 20%, 45%, 1);
+    --blue-90-100: hsla(231, 22%, 36%, 1);
+    --red-20-70: hsla(8, 100%, 92%, 0.7);
+    --red-20-100: hsla(8, 100%, 92%, 1);
+    --red-40-100: hsla(7, 96%, 80%, 1);
+    --red-50-100: hsla(8, 60%, 70%, 1);
+    --red-70-70: hsla(7, 30%, 50%, 0.7);
+    --red-70-100: hsla(7, 30%, 50%, 1);
+    --red-80-100: hsla(7, 32%, 41%, 1);
+    --greyscale-10-70: hsla(0, 8%, 95%, 0.7);
+    --greyscale-10-100: hsla(0, 8%, 95%, 1);
+    --greyscale-20-70: hsla(27, 30%, 93%, 0.7);
+    --greyscale-20-100: hsla(27, 30%, 93%, 1);
+    --greyscale-30-70: hsla(30, 16%, 83%, 0.7);
+    --greyscale-30-100: hsla(30, 16%, 83%, 1);
+    --greyscale-50-50: hsla(28, 9%, 65%, 0.5);
+    --greyscale-50-70: hsla(28, 9%, 65%, 0.7);
+    --greyscale-50-100: hsla(28, 9%, 65%, 1);
+    --greyscale-60-100: hsla(28, 8%, 56%, 1);
+    --greyscale-70-70: hsla(28, 7%, 47%, 0.7);
+    --greyscale-70-100: hsla(28, 7%, 47%, 1);
+    --greyscale-80-70: hsla(26, 8%, 38%, 0.7);
+    --greyscale-80-100: hsla(26, 8%, 38%, 1);
+    --greyscale-90-100: hsla(30, 9%, 30%, 1);
+    --greyscale-100-70: hsla(27, 10%, 21%, 0.7);
+    --greyscale-100-100: hsla(27, 10%, 21%, 1);
+    --tech-0-100: hsla(0, 0%, 100%, 1);
+}
+
+.dark {
+    --brown-10-100: hsla(29, 49%, 19%, 1);
+    --brown-20-70: hsla(29, 46%, 27%, 0.7);
+    --brown-20-100: hsla(29, 46%, 27%, 1);
+    --brown-30-70: hsla(29, 42%, 36%, 0.7);
+    --brown-30-100: hsla(29, 42%, 36%, 1);
+    --brown-50-100: hsla(29, 43%, 55%, 1);
+    --brown-60-70: hsla(29, 59%, 65%, 0.7);
+    --brown-60-100: hsla(29, 59%, 65%, 1);
+    --brown-90-100: hsla(29, 100%, 91%, 1);
+    --green-20-70: hsla(79, 17%, 35%, 0.7);
+    --green-20-100: hsla(79, 17%, 35%, 1);
+    --green-40-100: hsla(79, 17%, 53%, 1);
+    --green-60-100: hsla(79, 31%, 73%, 1);
+    --green-80-70: hsla(80, 100%, 91%, 0.7);
+    --green-80-100: hsla(80, 100%, 91%, 1);
+    --yellow-20-70: hsla(52, 40%, 30%, 0.7);
+    --yellow-20-100: hsla(52, 40%, 30%, 1);
+    --yellow-40-100: hsla(53, 34%, 48%, 1);
+    --yellow-60-100: hsla(53, 62%, 68%, 1);
+    --yellow-70-70: hsla(53, 96%, 78%, 0.7);
+    --yellow-70-100: hsla(53, 96%, 78%, 1);
+    --yellow-100-100: hsla(49, 100%, 98%, 1);
+    --blue-20-70: hsla(231, 22%, 36%, 0.7);
+    --blue-20-100: hsla(231, 22%, 36%, 1);
+    --blue-30-100: hsla(231, 20%, 45%, 1);
+    --blue-50-100: hsla(230, 29%, 63%, 1);
+    --blue-80-70: hsla(230, 100%, 88%, 0.7);
+    --blue-80-100: hsla(230, 100%, 88%, 1);
+    --blue-90-100: hsla(229, 100%, 93%, 1);
+    --red-20-70: hsla(7, 35%, 31%, 0.7);
+    --red-20-100: hsla(7, 35%, 31%, 1);
+    --red-40-100: hsla(7, 30%, 50%, 1);
+    --red-50-100: hsla(8, 42%, 60%, 1);
+    --red-70-70: hsla(7, 96%, 80%, 0.7);
+    --red-70-100: hsla(7, 96%, 80%, 1);
+    --red-80-100: hsla(8, 100%, 86%, 1);
+    --greyscale-10-70: hsla(27, 10%, 21%, 0.7);
+    --greyscale-10-100: hsla(27, 10%, 21%, 1);
+    --greyscale-20-70: hsla(30, 9%, 30%, 0.7);
+    --greyscale-20-100: hsla(30, 9%, 30%, 1);
+    --greyscale-30-70: hsla(26, 8%, 38%, 0.7);
+    --greyscale-30-100: hsla(26, 8%, 38%, 1);
+    --greyscale-50-50: hsla(28, 8%, 56%, 0.5);
+    --greyscale-50-70: hsla(28, 8%, 56%, 0.7);
+    --greyscale-50-100: hsla(28, 8%, 56%, 1);
+    --greyscale-60-100: hsla(28, 9%, 65%, 1);
+    --greyscale-70-70: hsla(28, 11%, 74%, 0.7);
+    --greyscale-70-100: hsla(28, 11%, 74%, 1);
+    --greyscale-80-70: hsla(30, 16%, 83%, 0.7);
+    --greyscale-80-100: hsla(30, 16%, 83%, 1);
+    --greyscale-90-100: hsla(27, 30%, 93%, 1);
+    --greyscale-100-70: hsla(0, 4%, 95%, 0.7);
+    --greyscale-100-100: hsla(0, 4%, 95%, 1);
+    --tech-0-100: hsla(0, 0%, 0%, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+        --brown-10-100: hsla(29, 49%, 19%, 1);
+        --brown-20-70: hsla(29, 46%, 27%, 0.7);
+        --brown-20-100: hsla(29, 46%, 27%, 1);
+        --brown-30-70: hsla(29, 42%, 36%, 0.7);
+        --brown-30-100: hsla(29, 42%, 36%, 1);
+        --brown-50-100: hsla(29, 43%, 55%, 1);
+        --brown-60-70: hsla(29, 59%, 65%, 0.7);
+        --brown-60-100: hsla(29, 59%, 65%, 1);
+        --brown-90-100: hsla(29, 100%, 91%, 1);
+        --green-20-70: hsla(79, 17%, 35%, 0.7);
+        --green-20-100: hsla(79, 17%, 35%, 1);
+        --green-40-100: hsla(79, 17%, 53%, 1);
+        --green-60-100: hsla(79, 31%, 73%, 1);
+        --green-80-70: hsla(80, 100%, 91%, 0.7);
+        --green-80-100: hsla(80, 100%, 91%, 1);
+        --yellow-20-70: hsla(52, 40%, 30%, 0.7);
+        --yellow-20-100: hsla(52, 40%, 30%, 1);
+        --yellow-40-100: hsla(53, 34%, 48%, 1);
+        --yellow-60-100: hsla(53, 62%, 68%, 1);
+        --yellow-70-70: hsla(53, 96%, 78%, 0.7);
+        --yellow-70-100: hsla(53, 96%, 78%, 1);
+        --yellow-100-100: hsla(49, 100%, 98%, 1);
+        --blue-20-70: hsla(231, 22%, 36%, 0.7);
+        --blue-20-100: hsla(231, 22%, 36%, 1);
+        --blue-30-100: hsla(231, 20%, 45%, 1);
+        --blue-50-100: hsla(230, 29%, 63%, 1);
+        --blue-80-70: hsla(230, 100%, 88%, 0.7);
+        --blue-80-100: hsla(230, 100%, 88%, 1);
+        --blue-90-100: hsla(229, 100%, 93%, 1);
+        --red-20-70: hsla(7, 35%, 31%, 0.7);
+        --red-20-100: hsla(7, 35%, 31%, 1);
+        --red-40-100: hsla(7, 30%, 50%, 1);
+        --red-50-100: hsla(8, 42%, 60%, 1);
+        --red-70-70: hsla(7, 96%, 80%, 0.7);
+        --red-70-100: hsla(7, 96%, 80%, 1);
+        --red-80-100: hsla(8, 100%, 86%, 1);
+        --greyscale-10-70: hsla(27, 10%, 21%, 0.7);
+        --greyscale-10-100: hsla(27, 10%, 21%, 1);
+        --greyscale-20-70: hsla(30, 9%, 30%, 0.7);
+        --greyscale-20-100: hsla(30, 9%, 30%, 1);
+        --greyscale-30-70: hsla(26, 8%, 38%, 0.7);
+        --greyscale-30-100: hsla(26, 8%, 38%, 1);
+        --greyscale-50-50: hsla(28, 8%, 56%, 0.5);
+        --greyscale-50-70: hsla(28, 8%, 56%, 0.7);
+        --greyscale-50-100: hsla(28, 8%, 56%, 1);
+        --greyscale-60-100: hsla(28, 9%, 65%, 1);
+        --greyscale-70-70: hsla(28, 11%, 74%, 0.7);
+        --greyscale-70-100: hsla(28, 11%, 74%, 1);
+        --greyscale-80-70: hsla(30, 16%, 83%, 0.7);
+        --greyscale-80-100: hsla(30, 16%, 83%, 1);
+        --greyscale-90-100: hsla(27, 30%, 93%, 1);
+        --greyscale-100-70: hsla(0, 4%, 95%, 0.7);
+        --greyscale-100-100: hsla(0, 4%, 95%, 1);
+        --tech-0-100: hsla(0, 0%, 0%, 1);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border-neutral-primary
+    }
+
+    body {
+        @apply text-text-neutral-primary bg-bg-neutral-primary text-sm;
+    }
+
+    svg {
+        @apply fill-icon-neutral-primary;
+    }
+}
+
+@keyframes fly-circle {
+    0% {
+        transform: rotate(0deg) translateX(20vw) rotate(0deg);
+        transform-origin: center center;
+    }
+    50% {
+        transform: rotate(180deg) translateX(20vw) rotate(-180deg) scale(0.8);
+    }
+    100% {
+        transform: rotate(360deg) translateX(20vw) rotate(-360deg);
+        transform-origin: center center;
+    }
+}
+@keyframes gradient-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.epr-emoji-picker {
+    border-radius: 1rem;
+    background-color: theme(colors.neutral.900);
+}
+
+.epr-search {
+    border-radius: 8px;
+    background: #222;
+    color: white;
+}
+
+.epr-category-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.epr-emoji {
+    transition: transform 0.1s ease;
+}
+
+.epr-emoji:hover {
+    transform: scale(1.2);
+}
+
+.recharts-wrapper * {
+    outline: none !important;
+    tab-index: -1;
+}

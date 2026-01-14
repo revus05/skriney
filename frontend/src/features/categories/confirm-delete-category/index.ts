@@ -1,0 +1,1 @@
+export { ConfirmDeleteCategoryModal } from './ui'

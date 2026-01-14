@@ -1,0 +1,7 @@
+export enum BalancePeriod {
+  LAST_7_DAYS = 'LAST_7_DAYS',
+  LAST_30_DAYS = 'LAST_30_DAYS',
+  LAST_3_MONTHS = 'LAST_3_MONTHS',
+  LAST_1_YEAR = 'LAST_1_YEAR',
+  ALL_TIME = 'ALL_TIME',
+}
