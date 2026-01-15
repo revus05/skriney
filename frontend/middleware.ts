@@ -15,19 +15,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  const meRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
-    cache: 'no-store',
-    headers: {
-      Cookie: `jwt=${jwt}`,
+  const meRes = await fetch(
+    `${process.env.NEXT_PUBLIC_ITERNAL_API_URL}/users/me`,
+    {
+      cache: 'no-store',
+      headers: {
+        Cookie: `jwt=${jwt}`,
+      },
     },
-  })
+  )
 
   if (meRes.ok) {
     return NextResponse.next()
   }
 
   const logoutRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/users/sign-out`,
+    `${process.env.NEXT_PUBLIC_ITERNAL_API_URL}/users/sign-out`,
     {
       method: 'POST',
       headers: {

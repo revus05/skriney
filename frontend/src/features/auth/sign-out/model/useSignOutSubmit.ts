@@ -14,6 +14,7 @@ export const useSignOutSubmit = () => {
         router.prefetch(paths.signIn)
         const res = await signOutUser().unwrap()
         if (res) {
+          sessionStorage.setItem('pending-sign-out', 'true')
           router.replace(paths.signIn)
         }
       } catch (error) {

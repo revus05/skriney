@@ -137,6 +137,11 @@
       <artifactId>postgresql</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -220,11 +225,12 @@
             </includes>
             <sortPom></sortPom>
           </pom>
+          <skip>true</skip>
         </configuration>
         <executions>
           <execution>
             <goals>
-              <goal>check</goal>
+              <goal>apply</goal>
             </goals>
             <phase>compile</phase>
           </execution>

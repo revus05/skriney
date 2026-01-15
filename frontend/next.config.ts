@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       {
         protocol: url.protocol.slice(0, -1) as 'http' | 'https',
         hostname: url.hostname,
-        port: url.port,
+        port: url.port || '',
       },
     ],
   },

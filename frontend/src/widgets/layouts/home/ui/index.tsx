@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation'
 import { paths } from 'shared/navigation'
 import { Header } from './header'
 import { Aside } from './aside'
+import { DeleteSignInSessionStorageItem } from 'features/auth/sign-in/lib/delete-sign-in-session-storage-item'
+import { DeleteSignOutSessionStorageItem } from 'features/auth/sign-out/lib/delete-sign-out-session-storage-item'
 
 type HomeLayoutType = {
   children: ReactNode
@@ -19,13 +21,17 @@ const HomeLayout: FC<HomeLayoutType> = async ({ children }) => {
   }
 
   return (
-    <main className={'p-2.5'}>
-      <Header />
-      <div className="mt-8 flex gap-8 pr-8">
-        <Aside />
-        {children}
-      </div>
-    </main>
+    <>
+      <main className={'p-2.5'}>
+        <Header />
+        <div className="mt-8 flex gap-8 pr-8">
+          <Aside />
+          {children}
+        </div>
+      </main>
+      <DeleteSignInSessionStorageItem />
+      <DeleteSignOutSessionStorageItem />
+    </>
   )
 }
 

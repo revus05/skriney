@@ -26,8 +26,7 @@ public class Category {
   @Column(nullable = false)
   private String title;
 
-  @Column
-  private String emoji = "";
+  @Column private String emoji = "";
 
   @CreatedDate
   @Column(nullable = false, updatable = false)

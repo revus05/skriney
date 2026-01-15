@@ -44,7 +44,7 @@ export async function GET() {
   let meRes
 
   try {
-    meRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
+    meRes = await fetch(`${process.env.NEXT_PUBLIC_ITERNAL_API_URL}/users/me`, {
       method: 'GET',
       cache: 'no-store',
       headers: {
@@ -74,7 +74,7 @@ export async function GET() {
 
   if (!user.userSettings?.language) {
     const updateRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user-settings/update-language`,
+      `${process.env.NEXT_PUBLIC_ITERNAL_API_URL}/user-settings/update-language`,
       {
         method: 'POST',
         cache: 'no-store',

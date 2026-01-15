@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { paths } from 'shared/navigation'
 import { useTranslation } from 'shared/i18n'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export const SignInForm = () => {
   const dispatch = useAppDispatch()
@@ -31,6 +32,14 @@ export const SignInForm = () => {
 
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof SignInFormData)
+
+  const [isRedirecting, setIsRedirecting] = useState(false)
+
+  useEffect(() => {
+    if (sessionStorage.getItem('pending-sign-in') === 'true') {
+      setIsRedirecting(true)
+    }
+  }, [isLoading])
 
   return (
     <form
@@ -70,7 +79,11 @@ export const SignInForm = () => {
         >
           <Translate value="auth.signIn.createAccount" />
         </Link>
-        <Button className={'mx-auto'} type={'submit'} loading={isLoading}>
+        <Button
+          className={'mx-auto'}
+          type={'submit'}
+          loading={isLoading || isRedirecting}
+        >
           <Translate value="auth.signIn.submit" />
         </Button>
       </div>

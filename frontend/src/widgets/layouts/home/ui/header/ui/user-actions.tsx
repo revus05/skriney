@@ -6,6 +6,7 @@ import { useAppSelector } from 'shared/lib'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { Button, Translate, UserImage } from 'shared/ui'
 import { useSignOutSubmit } from 'features/auth/sign-out'
+import { useEffect, useState } from 'react'
 
 export const HeaderUserActions = () => {
   const user = useAppSelector((state) => state.userSlice.user)
@@ -13,6 +14,14 @@ export const HeaderUserActions = () => {
   const router = useRouter()
 
   const { onSubmit, isLoading } = useSignOutSubmit()
+
+  const [isRedirecting, setIsRedirecting] = useState(false)
+
+  useEffect(() => {
+    if (sessionStorage.getItem('pending-sign-out') === 'true') {
+      setIsRedirecting(true)
+    }
+  }, [isLoading])
 
   return (
     <Popover placement="bottom-end">
@@ -53,7 +62,7 @@ export const HeaderUserActions = () => {
               '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary [&_div_div_div]:bg-bg-semantic-error-bold w-full rounded-xl px-3 py-2 font-bold'
             }
             onClick={onSubmit}
-            loading={isLoading}
+            loading={isLoading || isRedirecting}
           >
             <Translate value={`header.userActions.logout`} />
           </Button>
