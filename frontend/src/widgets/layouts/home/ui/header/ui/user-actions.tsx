@@ -20,6 +20,7 @@ export const HeaderUserActions = () => {
   useEffect(() => {
     if (sessionStorage.getItem('pending-sign-out') === 'true') {
       setIsRedirecting(true)
+      sessionStorage.removeItem('pending-sign-out')
     }
   }, [isLoading])
 

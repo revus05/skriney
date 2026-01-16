@@ -8,8 +8,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -18,8 +20,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 public class SecurityConfig {
 
-  @Value("${cors.origin}")
-  private String CORS_ORIGIN;
+  @Value("${management.endpoints.web.cors.allowed-origins}")
+  private List<String> CORS_ORIGINS;
 
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
@@ -64,8 +66,10 @@ public class SecurityConfig {
 
   @Bean
   public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+    System.out.println(CORS_ORIGINS);
+
     CorsConfiguration config = new CorsConfiguration();
-    config.setAllowedOrigins(List.of(CORS_ORIGIN));
+    config.setAllowedOrigins(CORS_ORIGINS);
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
     config.setAllowedHeaders(List.of("*"));
     config.setAllowCredentials(true);
@@ -73,5 +77,11 @@ public class SecurityConfig {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", config);
     return source;
+  }
+
+  @Bean
+  public UserDetailsService userDetailsService() {
+    // empty password manager
+    return new InMemoryUserDetailsManager();
   }
 }

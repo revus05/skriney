@@ -26,7 +26,10 @@ public class FileController {
   @PostMapping("/upload")
   public Response uploadFile(@RequestParam("file") MultipartFile file) {
     try {
-      Path uploadPath = Paths.get("uploads");
+      Path uploadPath = Paths.get("backend/uploads");
+
+      System.out.println(uploadPath);
+
       if (!Files.exists(uploadPath)) {
         Files.createDirectories(uploadPath);
       }

@@ -38,6 +38,7 @@ export const SignInForm = () => {
   useEffect(() => {
     if (sessionStorage.getItem('pending-sign-in') === 'true') {
       setIsRedirecting(true)
+      sessionStorage.removeItem('pending-sign-in')
     }
   }, [isLoading])
 

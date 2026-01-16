@@ -3,4 +3,4 @@
 *.iml
 .idea
 *.md
-Dockerfile.prod
+Dockerfile

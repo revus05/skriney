@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { paths } from 'shared/navigation'
 import { Header } from './header'
@@ -13,8 +13,16 @@ type HomeLayoutType = {
 
 const HomeLayout: FC<HomeLayoutType> = async ({ children }) => {
   const cookiesObj = await cookies()
+  const headersObj = await headers()
 
   const jwt = cookiesObj.get('jwt')?.value
+
+  console.log('================ home-layout ==================')
+  console.log('jwt:', jwt)
+
+  headersObj.forEach((header) => console.log(header))
+
+  console.log('\n\n')
 
   if (!jwt) {
     redirect(paths.signIn)

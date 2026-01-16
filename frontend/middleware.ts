@@ -25,6 +25,15 @@ export async function middleware(request: NextRequest) {
     },
   )
 
+  console.log('================ MIDDLEWARE ================')
+  console.log('meRes.ok', meRes.ok)
+  console.log('meRes.status', meRes.status)
+  console.log(
+    'NEXT_PUBLIC_ITERNAL_API_URL',
+    process.env.NEXT_PUBLIC_ITERNAL_API_URL,
+  )
+  console.log('\n\n')
+
   if (meRes.ok) {
     return NextResponse.next()
   }
