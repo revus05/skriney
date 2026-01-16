@@ -47,8 +47,6 @@ export const UserImage: FC<UserImageType> = ({
   size,
   ...props
 }) => {
-  console.log('user image', `${process.env.NEXT_PUBLIC_API_URL}${image}`)
-
   return (
     <div
       className={cn(
@@ -59,11 +57,12 @@ export const UserImage: FC<UserImageType> = ({
     >
       {image ? (
         <Image
-          src={`${process.env.NEXT_PUBLIC_FILES_URL}${image}`}
+          src={image}
           alt="user"
           width={size}
           height={size}
           className={'h-full w-full object-cover'}
+          unoptimized
         />
       ) : (
         <div

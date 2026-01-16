@@ -16,8 +16,5 @@ next-env.d.ts
 .idea
 /backend/backend.iml
 
-#uploads
-/backend/uploads
-
 #target
 /backend/target
