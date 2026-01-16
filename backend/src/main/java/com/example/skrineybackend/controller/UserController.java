@@ -5,11 +5,11 @@ import com.example.skrineybackend.dto.user.SignInUserRequestDTO;
 import com.example.skrineybackend.dto.user.SignUpUserRequestDTO;
 import com.example.skrineybackend.dto.user.UpdateUserImageRequestDTO;
 import com.example.skrineybackend.dto.user.UserDTO;
-import com.example.skrineybackend.service.CookieService;
 import com.example.skrineybackend.service.JwtService;
 import com.example.skrineybackend.service.UserService;
 import com.example.skrineybackend.swagger.user.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,6 @@ public class UserController {
 
   private final UserService userService;
   private final JwtService jwtService;
-  private final CookieService cookieService;
 
   @SignUpOperation
   @PostMapping("/sign-up")
@@ -41,10 +40,10 @@ public class UserController {
   @SignInOperation
   @PostMapping("/sign-in")
   public Response signInUser(
-      @Valid @RequestBody SignInUserRequestDTO signInUserRequestDTO, HttpServletResponse response) {
+          @Valid @RequestBody SignInUserRequestDTO signInUserRequestDTO, HttpServletResponse response, HttpServletRequest request) {
     UserDTO loggedUser = userService.signInUser(signInUserRequestDTO);
     String token = jwtService.generateToken(loggedUser.getUuid());
-    cookieService.createJwtCookie(response, token, 60 * 60 * 24 * 7);
+    response.addCookie(jwtService.createJwtCookie(request, token, 60 * 60 * 24 * 7));
     return new Response("Пользователь успешно авторизован", HttpStatus.OK, loggedUser);
   }
 
@@ -69,8 +68,8 @@ public class UserController {
 
   @SignOutOperation
   @PostMapping("/sign-out")
-  public Response singOut(HttpServletResponse response) {
-    cookieService.createJwtCookie(response, "", 0);
+  public Response singOut(HttpServletResponse response, HttpServletRequest request) {
+  response.addCookie(jwtService.createJwtCookie(request, "", 0));
     return new Response("Пользователь успешно вышел", HttpStatus.OK);
   }
 }

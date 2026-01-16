@@ -5,11 +5,17 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import javax.crypto.SecretKey;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -59,5 +65,49 @@ public class JwtService {
     User principal = new User(uuid, "", authorities);
 
     return new UsernamePasswordAuthenticationToken(principal, token, authorities);
+  }
+
+  public Cookie createJwtCookie(HttpServletRequest request, String value, int maxAge) {
+    Cookie jwtCookie = new Cookie("jwt", value);
+
+    jwtCookie.setHttpOnly(true);
+    jwtCookie.setSecure(true);
+    jwtCookie.setAttribute("SameSite", "Lax");
+    jwtCookie.setPath("/");
+    jwtCookie.setMaxAge(maxAge);
+
+    String Host = request.getHeader("Origin");
+
+    String domain = extractDomain(Host);
+
+    System.out.println(domain);
+
+    jwtCookie.setDomain(domain);
+
+    return jwtCookie;
+  }
+
+  private String extractDomain(String origin) {
+    try {
+      URI uri = new URI(origin);
+      String host = uri.getHost();
+
+      if (host == null) {
+        return null;
+      }
+
+      if (host.startsWith("www.")) {
+        host = host.substring(4);
+      }
+
+      if (host.startsWith("api.")) {
+        host = host.substring(4);
+      }
+
+      return host;
+    } catch (URISyntaxException e) {
+      System.err.println("Invalid CORS_ORIGIN: " + origin);
+    }
+    return null;
   }
 }
