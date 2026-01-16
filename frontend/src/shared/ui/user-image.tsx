@@ -59,7 +59,7 @@ export const UserImage: FC<UserImageType> = ({
     >
       {image ? (
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_URL}${image}`}
+          src={`${process.env.NEXT_PUBLIC_FILES_URL}${image}`}
           alt="user"
           width={size}
           height={size}
