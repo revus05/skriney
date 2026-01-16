@@ -28,8 +28,6 @@ public class FileController {
     try {
       Path uploadPath = Paths.get("backend/uploads");
 
-      System.out.println(uploadPath);
-
       if (!Files.exists(uploadPath)) {
         Files.createDirectories(uploadPath);
       }

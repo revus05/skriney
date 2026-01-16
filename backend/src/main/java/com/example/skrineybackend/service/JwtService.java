@@ -80,8 +80,6 @@ public class JwtService {
 
     String domain = extractDomain(Host);
 
-    System.out.println(domain);
-
     jwtCookie.setDomain(domain);
 
     return jwtCookie;

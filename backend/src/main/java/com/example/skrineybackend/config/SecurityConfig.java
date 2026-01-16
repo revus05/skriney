@@ -66,8 +66,6 @@ public class SecurityConfig {
 
   @Bean
   public UrlBasedCorsConfigurationSource corsConfigurationSource() {
-    System.out.println(CORS_ORIGINS);
-
     CorsConfiguration config = new CorsConfiguration();
     config.setAllowedOrigins(CORS_ORIGINS);
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
