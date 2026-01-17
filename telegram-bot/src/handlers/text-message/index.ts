@@ -10,7 +10,7 @@ export const handleTextMessage = async (ctx: Context) => {
 
   const match = ctx.message.text.match(/([+-])?\s*(-?\d+([.,]\d+)?)/)
   if (!match) {
-    void ctx.reply('Сумма не найдена')
+    void ctx.reply('Сумма не найдена, но с ci/cd')
     return
   }
 
