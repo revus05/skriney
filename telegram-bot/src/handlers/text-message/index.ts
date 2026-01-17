@@ -6,6 +6,8 @@ export const handleTextMessage = async (ctx: Context) => {
     return
   }
 
+  void ctx.reply('Сообщение принял')
+
   const match = ctx.message.text.match(/([+-])?\s*(-?\d+([.,]\d+)?)/)
   if (!match) {
     void ctx.reply('Сумма не найдена')

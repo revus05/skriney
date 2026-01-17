@@ -6,6 +6,7 @@ services:
     env_file: .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./telegram-bot/prisma/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
 
@@ -35,6 +36,16 @@ services:
       - "3000:3000"
     restart: unless-stopped
 
+  telegram-bot:
+    build:
+      context: ./telegram-bot
+      dockerfile: Dockerfile
+    container_name: telegram-bot
+    restart: unless-stopped
+    env_file:
+      - ./telegram-bot/.env
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
-  maven-repo:

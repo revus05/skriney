@@ -1,13 +1,17 @@
-FROM oven/bun:1.3.6-alpine
-
+# ---------- Stage 1: Deps ----------
+FROM oven/bun:1.1.6-alpine AS deps
 WORKDIR /app
-
 COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
-RUN bun install
+# ---------- Stage 2: Run ----------
+FROM oven/bun:1.3.6-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
 
-COPY ./ ./
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
 RUN bun run gen:prisma
 
-CMD ["bun", "run", "start"]
+CMD bunx prisma migrate deploy && bun run start

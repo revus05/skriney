@@ -12,7 +12,7 @@ RUN mvn spotless:apply
 
 RUN mvn clean package -DskipTests
 
-# ---------- Stage 1: Run ----------
+# ---------- Stage 2: Run ----------
 FROM eclipse-temurin:20-jre-alpine
 
 WORKDIR /app
