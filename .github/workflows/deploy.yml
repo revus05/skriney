@@ -1,0 +1,42 @@
+name: CI/CD Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            cd ${{ secrets.DEPLOY_PATH }}
+
+            echo "📦 Pulling latest code"
+            git pull origin main
+
+            echo "🛑 Stopping old containers"
+            docker compose down
+
+            echo "🏗️ Building containers"
+            docker compose build
+
+            echo "🚀 Starting containers"
+            docker compose up -d
+
+            echo "🧹 Cleanup"
+            docker image prune -f
+          EOF
