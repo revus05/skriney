@@ -23,7 +23,7 @@ export const useSignInSubmit = () => {
         if (res && res.data) {
           sessionStorage.setItem('pending-sign-in', 'true')
           dispatch(signIn(res.data))
-          router.replace(paths.home)
+          router.push(paths.home)
         }
       } catch (error) {
         const err = getApiError<Record<string, string>>(error)
