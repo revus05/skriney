@@ -49,6 +49,7 @@ export const SignInForm = () => {
     >
       <h2 className="text-xl font-semibold">
         <Translate value="auth.signIn.title" />
+        123
       </h2>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
