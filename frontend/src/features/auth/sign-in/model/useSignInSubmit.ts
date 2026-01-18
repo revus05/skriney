@@ -18,7 +18,6 @@ export const useSignInSubmit = () => {
   return {
     onSubmit: async (data: SignInFormData) => {
       try {
-        router.prefetch(paths.home)
         const res = await signInUser(data).unwrap()
         if (res && res.data) {
           sessionStorage.setItem('pending-sign-in', 'true')
