@@ -156,7 +156,7 @@ const CustomTooltip: ContentType<ValueType, NameType> = ({
           <span className={'text-text-neutral-primary text-xs'}>Баланс:</span>
           <Balance
             balance={data.totalBalance}
-            currency={Currency.BYN}
+            currency={Currency.USD}
             withColor
             withBackground
             classNames={{
@@ -172,7 +172,7 @@ const CustomTooltip: ContentType<ValueType, NameType> = ({
           </span>
           <Balance
             balance={data.dailyChange}
-            currency={Currency.BYN}
+            currency={Currency.USD}
             withColor
             withBackground
             signed
@@ -188,7 +188,7 @@ const CustomTooltip: ContentType<ValueType, NameType> = ({
             <span className={'text-text-neutral-primary text-xs'}>Доходы:</span>
             <Balance
               balance={data.dailyIncome}
-              currency={Currency.BYN}
+              currency={Currency.USD}
               withColor
               withBackground
               classNames={{
@@ -206,7 +206,7 @@ const CustomTooltip: ContentType<ValueType, NameType> = ({
             </span>
             <Balance
               balance={data.dailyExpenses}
-              currency={Currency.BYN}
+              currency={Currency.USD}
               withColor
               withBackground
               isExpense

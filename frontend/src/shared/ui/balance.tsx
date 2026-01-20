@@ -78,8 +78,7 @@ export const Balance: FC<BalanceType> = ({
                   )}
                 >
                   {(signed || index !== 0) && balance > 0 && '+'}
-                  {balance}
-                  {currency}
+                  {balance} {currency}
                 </span>
               ),
             )}
@@ -110,7 +109,7 @@ export const Balance: FC<BalanceType> = ({
         )}
         {!!balanceInUsd && Object.entries(currencyBalances).length > 1 && (
           <span className={'text-text-neutral-tertiary text-xs'}>
-            {` ≈ ${formattedBalanceIdUsd}`}
+            {` ≈ ${formattedBalanceIdUsd} `}
             {Currency.USD}
           </span>
         )}
@@ -122,12 +121,6 @@ export const Balance: FC<BalanceType> = ({
             </span>
           </>
         )}
-        <span
-          className={cn('text-text-neutral-tertiary', classNames?.currency)}
-        >
-          {' '}
-          {currency}
-        </span>
       </div>
     </div>
   )

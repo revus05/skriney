@@ -70,7 +70,9 @@ export const TransactionsList = () => {
         const currency = transaction.currency
 
         currencyBalance[currency] =
-          (currencyBalance[currency] ?? 0) + transaction.amount
+          Math.round(
+            ((currencyBalance[currency] ?? 0) + transaction.amount) * 100,
+          ) / 100
 
         return currencyBalance
       },
