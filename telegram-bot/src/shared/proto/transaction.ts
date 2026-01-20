@@ -2,7 +2,7 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.7
 //   protoc               v6.32.0
-// source: src/proto/transaction.proto
+// source: src/shared/proto/transaction.proto
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
@@ -20,6 +20,16 @@ export interface CreateTransactionRequest {
 
 export interface CreateTransactionResponse {
   transactionUuid: string;
+  amount: number;
+  currency: string;
+  bankAccountBalanceInUsd: number;
+  categoryUuid: string;
+  categoryTitle: string;
+  categoryEmoji: string;
+  bankAccountUuid: string;
+  bankAccountTitle: string;
+  bankAccountEmoji: string;
+  description?: string | undefined;
 }
 
 function createBaseCreateTransactionRequest(): CreateTransactionRequest {
@@ -170,13 +180,55 @@ export const CreateTransactionRequest: MessageFns<CreateTransactionRequest> = {
 };
 
 function createBaseCreateTransactionResponse(): CreateTransactionResponse {
-  return { transactionUuid: "" };
+  return {
+    transactionUuid: "",
+    amount: 0,
+    currency: "",
+    bankAccountBalanceInUsd: 0,
+    categoryUuid: "",
+    categoryTitle: "",
+    categoryEmoji: "",
+    bankAccountUuid: "",
+    bankAccountTitle: "",
+    bankAccountEmoji: "",
+    description: undefined,
+  };
 }
 
 export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = {
   encode(message: CreateTransactionResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.transactionUuid !== "") {
       writer.uint32(10).string(message.transactionUuid);
+    }
+    if (message.amount !== 0) {
+      writer.uint32(17).double(message.amount);
+    }
+    if (message.currency !== "") {
+      writer.uint32(26).string(message.currency);
+    }
+    if (message.bankAccountBalanceInUsd !== 0) {
+      writer.uint32(33).double(message.bankAccountBalanceInUsd);
+    }
+    if (message.categoryUuid !== "") {
+      writer.uint32(42).string(message.categoryUuid);
+    }
+    if (message.categoryTitle !== "") {
+      writer.uint32(50).string(message.categoryTitle);
+    }
+    if (message.categoryEmoji !== "") {
+      writer.uint32(58).string(message.categoryEmoji);
+    }
+    if (message.bankAccountUuid !== "") {
+      writer.uint32(66).string(message.bankAccountUuid);
+    }
+    if (message.bankAccountTitle !== "") {
+      writer.uint32(74).string(message.bankAccountTitle);
+    }
+    if (message.bankAccountEmoji !== "") {
+      writer.uint32(82).string(message.bankAccountEmoji);
+    }
+    if (message.description !== undefined) {
+      writer.uint32(90).string(message.description);
     }
     return writer;
   },
@@ -196,6 +248,86 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
           message.transactionUuid = reader.string();
           continue;
         }
+        case 2: {
+          if (tag !== 17) {
+            break;
+          }
+
+          message.amount = reader.double();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.currency = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 33) {
+            break;
+          }
+
+          message.bankAccountBalanceInUsd = reader.double();
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.categoryUuid = reader.string();
+          continue;
+        }
+        case 6: {
+          if (tag !== 50) {
+            break;
+          }
+
+          message.categoryTitle = reader.string();
+          continue;
+        }
+        case 7: {
+          if (tag !== 58) {
+            break;
+          }
+
+          message.categoryEmoji = reader.string();
+          continue;
+        }
+        case 8: {
+          if (tag !== 66) {
+            break;
+          }
+
+          message.bankAccountUuid = reader.string();
+          continue;
+        }
+        case 9: {
+          if (tag !== 74) {
+            break;
+          }
+
+          message.bankAccountTitle = reader.string();
+          continue;
+        }
+        case 10: {
+          if (tag !== 82) {
+            break;
+          }
+
+          message.bankAccountEmoji = reader.string();
+          continue;
+        }
+        case 11: {
+          if (tag !== 90) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -206,13 +338,57 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
   },
 
   fromJSON(object: any): CreateTransactionResponse {
-    return { transactionUuid: isSet(object.transactionUuid) ? globalThis.String(object.transactionUuid) : "" };
+    return {
+      transactionUuid: isSet(object.transactionUuid) ? globalThis.String(object.transactionUuid) : "",
+      amount: isSet(object.amount) ? globalThis.Number(object.amount) : 0,
+      currency: isSet(object.currency) ? globalThis.String(object.currency) : "",
+      bankAccountBalanceInUsd: isSet(object.bankAccountBalanceInUsd)
+        ? globalThis.Number(object.bankAccountBalanceInUsd)
+        : 0,
+      categoryUuid: isSet(object.categoryUuid) ? globalThis.String(object.categoryUuid) : "",
+      categoryTitle: isSet(object.categoryTitle) ? globalThis.String(object.categoryTitle) : "",
+      categoryEmoji: isSet(object.categoryEmoji) ? globalThis.String(object.categoryEmoji) : "",
+      bankAccountUuid: isSet(object.bankAccountUuid) ? globalThis.String(object.bankAccountUuid) : "",
+      bankAccountTitle: isSet(object.bankAccountTitle) ? globalThis.String(object.bankAccountTitle) : "",
+      bankAccountEmoji: isSet(object.bankAccountEmoji) ? globalThis.String(object.bankAccountEmoji) : "",
+      description: isSet(object.description) ? globalThis.String(object.description) : undefined,
+    };
   },
 
   toJSON(message: CreateTransactionResponse): unknown {
     const obj: any = {};
     if (message.transactionUuid !== "") {
       obj.transactionUuid = message.transactionUuid;
+    }
+    if (message.amount !== 0) {
+      obj.amount = message.amount;
+    }
+    if (message.currency !== "") {
+      obj.currency = message.currency;
+    }
+    if (message.bankAccountBalanceInUsd !== 0) {
+      obj.bankAccountBalanceInUsd = message.bankAccountBalanceInUsd;
+    }
+    if (message.categoryUuid !== "") {
+      obj.categoryUuid = message.categoryUuid;
+    }
+    if (message.categoryTitle !== "") {
+      obj.categoryTitle = message.categoryTitle;
+    }
+    if (message.categoryEmoji !== "") {
+      obj.categoryEmoji = message.categoryEmoji;
+    }
+    if (message.bankAccountUuid !== "") {
+      obj.bankAccountUuid = message.bankAccountUuid;
+    }
+    if (message.bankAccountTitle !== "") {
+      obj.bankAccountTitle = message.bankAccountTitle;
+    }
+    if (message.bankAccountEmoji !== "") {
+      obj.bankAccountEmoji = message.bankAccountEmoji;
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
     }
     return obj;
   },
@@ -223,6 +399,16 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
   fromPartial<I extends Exact<DeepPartial<CreateTransactionResponse>, I>>(object: I): CreateTransactionResponse {
     const message = createBaseCreateTransactionResponse();
     message.transactionUuid = object.transactionUuid ?? "";
+    message.amount = object.amount ?? 0;
+    message.currency = object.currency ?? "";
+    message.bankAccountBalanceInUsd = object.bankAccountBalanceInUsd ?? 0;
+    message.categoryUuid = object.categoryUuid ?? "";
+    message.categoryTitle = object.categoryTitle ?? "";
+    message.categoryEmoji = object.categoryEmoji ?? "";
+    message.bankAccountUuid = object.bankAccountUuid ?? "";
+    message.bankAccountTitle = object.bankAccountTitle ?? "";
+    message.bankAccountEmoji = object.bankAccountEmoji ?? "";
+    message.description = object.description ?? undefined;
     return message;
   },
 };

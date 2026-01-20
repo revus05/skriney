@@ -19,4 +19,14 @@ message CreateTransactionRequest {
 
 message CreateTransactionResponse {
   string transactionUuid = 1;
+  double amount = 2;
+  string currency = 3;
+  double bankAccountBalanceInUsd = 4;
+  string categoryUuid = 5;
+  string categoryTitle = 6;
+  string categoryEmoji = 7;
+  string bankAccountUuid = 8;
+  string bankAccountTitle = 9;
+  string bankAccountEmoji = 10;
+  optional string description = 11;
 }

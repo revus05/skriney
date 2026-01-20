@@ -45,7 +45,7 @@ public class UserService {
     User foundUser =
         userRepo
             .findById(userUuid)
-            .orElseThrow(() -> new UnauthorizedException("Нет пользователя для такого uuid"));
+            .orElseThrow(() -> new UnauthorizedException("Нет пользователя с таким uuid"));
 
     return new UserDTO(foundUser);
   }

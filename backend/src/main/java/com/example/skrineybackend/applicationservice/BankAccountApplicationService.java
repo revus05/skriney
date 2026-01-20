@@ -44,6 +44,14 @@ public class BankAccountApplicationService {
 
     return getBankAccountsDTOWithCurrencyBalance(bankAccounts);
   }
+  @Transactional
+  public BankAccountDTO getOneBankAccount(String userUuid, String uuid) {
+    userRepo.findById(userUuid).orElseThrow(() -> new UnauthorizedException("Не авторизован"));
+
+    BankAccount bankAccount = bankAccountService.getOneBankAccount(userUuid, uuid);
+
+    return getBankAccountsDTOWithCurrencyBalance(bankAccount);
+  }
 
   @Transactional
   public BankAccountDTO createBankAccount(

@@ -4,6 +4,7 @@ import com.example.skrineybackend.dto.bankaccount.CreateBankAccountRequestDTO;
 import com.example.skrineybackend.dto.bankaccount.UpdateBankAccountRequestDTO;
 import com.example.skrineybackend.entity.BankAccount;
 import com.example.skrineybackend.entity.User;
+import com.example.skrineybackend.exception.NoBankAccountFoundException;
 import com.example.skrineybackend.repository.BankAccountRepo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,10 @@ public class BankAccountService {
 
   public List<BankAccount> getAllBankAccounts(String userUuid) {
     return bankAccountRepo.findAllByUser_UuidOrderByCreatedAtAsc(userUuid);
+  }
+
+  public BankAccount getOneBankAccount(String userUuid, String uuid) {
+    return bankAccountRepo.findByUuidAndUser_Uuid(uuid, userUuid).orElseThrow(() -> new NoBankAccountFoundException("Счет не найден"));
   }
 
   public BankAccount createBankAccount(CreateBankAccountRequestDTO requestBody, User user) {

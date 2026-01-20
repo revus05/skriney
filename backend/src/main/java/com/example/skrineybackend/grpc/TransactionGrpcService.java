@@ -3,16 +3,19 @@ package com.example.skrineybackend.grpc;
 import com.example.grpc.CreateTransactionRequest;
 import com.example.grpc.CreateTransactionResponse;
 import com.example.grpc.TransactionServiceGrpc;
+import com.example.skrineybackend.applicationservice.BankAccountApplicationService;
 import com.example.skrineybackend.applicationservice.TransactionApplicationService;
+import com.example.skrineybackend.dto.bankaccount.BankAccountDTO;
 import com.example.skrineybackend.dto.transaction.CreateTransactionRequestDTO;
 import com.example.skrineybackend.dto.transaction.TransactionDTO;
 import com.example.skrineybackend.entity.User;
 import com.example.skrineybackend.enums.Currency;
 import com.example.skrineybackend.service.UserService;
 import io.grpc.stub.StreamObserver;
-import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.server.service.GrpcService;
+
+import java.math.BigDecimal;
 
 @GrpcService
 @RequiredArgsConstructor
@@ -20,6 +23,7 @@ public class TransactionGrpcService extends TransactionServiceGrpc.TransactionSe
 
   private final UserService userService;
   private final TransactionApplicationService transactionApplicationService;
+  private final BankAccountApplicationService bankAccountApplicationService;
 
   @Override
   public void createTransaction(
@@ -44,8 +48,22 @@ public class TransactionGrpcService extends TransactionServiceGrpc.TransactionSe
     TransactionDTO transaction =
         transactionApplicationService.createTransaction(dto, user.getUuid());
 
+    BankAccountDTO bankAccount =
+        bankAccountApplicationService.getOneBankAccount(user.getUuid(), transaction.getBankAccountUuid());
+
     CreateTransactionResponse response =
-        CreateTransactionResponse.newBuilder().setTransactionUuid(transaction.getUuid()).build();
+        CreateTransactionResponse.newBuilder()
+                .setTransactionUuid(transaction.getUuid())
+                .setAmount(transaction.getAmount().doubleValue())
+                .setCurrency(transaction.getCurrency().name())
+                .setCategoryEmoji(transaction.getCategory().getEmoji())
+                .setCategoryTitle(transaction.getCategory().getTitle())
+                .setCategoryUuid(transaction.getCategory().getUuid())
+                .setBankAccountEmoji(bankAccount.getEmoji())
+                .setBankAccountTitle(bankAccount.getTitle())
+                .setBankAccountUuid(bankAccount.getUuid())
+                .setBankAccountBalanceInUsd(bankAccount.getBalanceInUsd().doubleValue())
+                .build();
 
     responseObserver.onNext(response);
     responseObserver.onCompleted();

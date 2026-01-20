@@ -17,7 +17,12 @@ export const settingsConversation: SettingsConversation = async (
 ) => {
   let user: User | null = await getUser(ctx.from?.id)
 
-  if (!user) return
+  if (!user) {
+    void ctx.reply(
+      'Ваш телеграм еще не привязан к аккаунту skriney. Вы можете это сделать по ссылке: https://skriney.online/settings',
+    )
+    return
+  }
 
   const message = await ctx.reply('Настройки бота:', {
     reply_markup: userSettingsKeyboard(user),

@@ -14,4 +14,4 @@ COPY . .
 
 RUN bun run gen:prisma
 
-CMD bunx prisma migrate deploy && bun run start
+CMD bun run start

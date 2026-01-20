@@ -7,6 +7,7 @@ import { getBankAccountKeyboard } from 'features/bank-account'
 import { getCurrenciesKeyboard } from 'features/currency'
 import { getUser } from 'features/user'
 import type { User } from '@prisma/client'
+import { getCreateTransactionReply } from 'features/transaction/create-transaction/reply'
 
 type CreateTransactionConversation = (
   conversation: Conversation<Context>,
@@ -51,7 +52,7 @@ export const createTransactionConversation: CreateTransactionConversation =
         .trim(),
     })
 
-    void ctx.reply(createTransactionResponse.transactionUuid)
+    void ctx.reply(getCreateTransactionReply(createTransactionResponse))
   }
 
 type GetCurrency = (
