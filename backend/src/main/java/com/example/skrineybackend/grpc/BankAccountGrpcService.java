@@ -29,14 +29,20 @@ public class BankAccountGrpcService extends BankAccountServiceGrpc.BankAccountSe
         bankAccountService.getAllBankAccounts(user.getUuid()).stream()
             .map(
                 dto ->
-                    BankAccount.newBuilder()
-                        .setUuid(dto.getUuid())
-                        .setBalance(MoneyConverter.toCents(dto.getBalanceInUsd()))
-                        .setTitle(dto.getTitle())
-                        .setEmoji(dto.getEmoji())
-                        .setCreatedAt(String.valueOf(dto.getCreatedAt()))
-                        .setUpdatedAt(String.valueOf(dto.getUpdatedAt()))
-                        .build())
+                {
+                  BankAccount.Builder builder = BankAccount.newBuilder()
+                    .setUuid(dto.getUuid())
+                    .setBalance(MoneyConverter.toCents(dto.getBalanceInUsd()))
+                    .setTitle(dto.getTitle())
+                    .setCreatedAt(String.valueOf(dto.getCreatedAt()))
+                    .setUpdatedAt(String.valueOf(dto.getUpdatedAt()));
+
+                  if (dto.getEmoji() != null) {
+                    builder.setEmoji(dto.getEmoji());
+                  }
+
+                  return builder.build();
+                })
             .toList();
 
     GetBankAccountsResponse response =

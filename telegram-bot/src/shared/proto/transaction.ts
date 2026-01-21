@@ -25,10 +25,10 @@ export interface CreateTransactionResponse {
   bankAccountBalanceInUsd: number;
   categoryUuid: string;
   categoryTitle: string;
-  categoryEmoji: string;
+  categoryEmoji?: string | undefined;
   bankAccountUuid: string;
   bankAccountTitle: string;
-  bankAccountEmoji: string;
+  bankAccountEmoji?: string | undefined;
   description?: string | undefined;
 }
 
@@ -187,10 +187,10 @@ function createBaseCreateTransactionResponse(): CreateTransactionResponse {
     bankAccountBalanceInUsd: 0,
     categoryUuid: "",
     categoryTitle: "",
-    categoryEmoji: "",
+    categoryEmoji: undefined,
     bankAccountUuid: "",
     bankAccountTitle: "",
-    bankAccountEmoji: "",
+    bankAccountEmoji: undefined,
     description: undefined,
   };
 }
@@ -215,7 +215,7 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
     if (message.categoryTitle !== "") {
       writer.uint32(50).string(message.categoryTitle);
     }
-    if (message.categoryEmoji !== "") {
+    if (message.categoryEmoji !== undefined) {
       writer.uint32(58).string(message.categoryEmoji);
     }
     if (message.bankAccountUuid !== "") {
@@ -224,7 +224,7 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
     if (message.bankAccountTitle !== "") {
       writer.uint32(74).string(message.bankAccountTitle);
     }
-    if (message.bankAccountEmoji !== "") {
+    if (message.bankAccountEmoji !== undefined) {
       writer.uint32(82).string(message.bankAccountEmoji);
     }
     if (message.description !== undefined) {
@@ -347,10 +347,10 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
         : 0,
       categoryUuid: isSet(object.categoryUuid) ? globalThis.String(object.categoryUuid) : "",
       categoryTitle: isSet(object.categoryTitle) ? globalThis.String(object.categoryTitle) : "",
-      categoryEmoji: isSet(object.categoryEmoji) ? globalThis.String(object.categoryEmoji) : "",
+      categoryEmoji: isSet(object.categoryEmoji) ? globalThis.String(object.categoryEmoji) : undefined,
       bankAccountUuid: isSet(object.bankAccountUuid) ? globalThis.String(object.bankAccountUuid) : "",
       bankAccountTitle: isSet(object.bankAccountTitle) ? globalThis.String(object.bankAccountTitle) : "",
-      bankAccountEmoji: isSet(object.bankAccountEmoji) ? globalThis.String(object.bankAccountEmoji) : "",
+      bankAccountEmoji: isSet(object.bankAccountEmoji) ? globalThis.String(object.bankAccountEmoji) : undefined,
       description: isSet(object.description) ? globalThis.String(object.description) : undefined,
     };
   },
@@ -375,7 +375,7 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
     if (message.categoryTitle !== "") {
       obj.categoryTitle = message.categoryTitle;
     }
-    if (message.categoryEmoji !== "") {
+    if (message.categoryEmoji !== undefined) {
       obj.categoryEmoji = message.categoryEmoji;
     }
     if (message.bankAccountUuid !== "") {
@@ -384,7 +384,7 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
     if (message.bankAccountTitle !== "") {
       obj.bankAccountTitle = message.bankAccountTitle;
     }
-    if (message.bankAccountEmoji !== "") {
+    if (message.bankAccountEmoji !== undefined) {
       obj.bankAccountEmoji = message.bankAccountEmoji;
     }
     if (message.description !== undefined) {
@@ -404,10 +404,10 @@ export const CreateTransactionResponse: MessageFns<CreateTransactionResponse> = 
     message.bankAccountBalanceInUsd = object.bankAccountBalanceInUsd ?? 0;
     message.categoryUuid = object.categoryUuid ?? "";
     message.categoryTitle = object.categoryTitle ?? "";
-    message.categoryEmoji = object.categoryEmoji ?? "";
+    message.categoryEmoji = object.categoryEmoji ?? undefined;
     message.bankAccountUuid = object.bankAccountUuid ?? "";
     message.bankAccountTitle = object.bankAccountTitle ?? "";
-    message.bankAccountEmoji = object.bankAccountEmoji ?? "";
+    message.bankAccountEmoji = object.bankAccountEmoji ?? undefined;
     message.description = object.description ?? undefined;
     return message;
   },

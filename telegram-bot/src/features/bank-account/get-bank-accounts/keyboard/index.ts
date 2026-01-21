@@ -15,7 +15,10 @@ export const getBankAccountKeyboard = async (telegramId: number) => {
 
   getBankAccountsResponse.bankAccounts.forEach((bankAccount: BankAccount) => {
     bankAccountsKeyboard
-      .text(`${bankAccount.emoji} ${bankAccount.title}`, bankAccount.uuid)
+      .text(
+        `${bankAccount.emoji ? bankAccount.emoji : ''} ${bankAccount.title}`,
+        bankAccount.uuid,
+      )
       .row()
   })
 

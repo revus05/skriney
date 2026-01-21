@@ -18,7 +18,7 @@ export interface BankAccount {
   balance: number;
   currency: string;
   title: string;
-  emoji: string;
+  emoji?: string | undefined;
   isInTotalBalance: boolean;
   createdAt: string;
   updatedAt: string;
@@ -93,7 +93,7 @@ function createBaseBankAccount(): BankAccount {
     balance: 0,
     currency: "",
     title: "",
-    emoji: "",
+    emoji: undefined,
     isInTotalBalance: false,
     createdAt: "",
     updatedAt: "",
@@ -114,7 +114,7 @@ export const BankAccount: MessageFns<BankAccount> = {
     if (message.title !== "") {
       writer.uint32(34).string(message.title);
     }
-    if (message.emoji !== "") {
+    if (message.emoji !== undefined) {
       writer.uint32(42).string(message.emoji);
     }
     if (message.isInTotalBalance !== false) {
@@ -215,7 +215,7 @@ export const BankAccount: MessageFns<BankAccount> = {
       balance: isSet(object.balance) ? globalThis.Number(object.balance) : 0,
       currency: isSet(object.currency) ? globalThis.String(object.currency) : "",
       title: isSet(object.title) ? globalThis.String(object.title) : "",
-      emoji: isSet(object.emoji) ? globalThis.String(object.emoji) : "",
+      emoji: isSet(object.emoji) ? globalThis.String(object.emoji) : undefined,
       isInTotalBalance: isSet(object.isInTotalBalance) ? globalThis.Boolean(object.isInTotalBalance) : false,
       createdAt: isSet(object.createdAt) ? globalThis.String(object.createdAt) : "",
       updatedAt: isSet(object.updatedAt) ? globalThis.String(object.updatedAt) : "",
@@ -236,7 +236,7 @@ export const BankAccount: MessageFns<BankAccount> = {
     if (message.title !== "") {
       obj.title = message.title;
     }
-    if (message.emoji !== "") {
+    if (message.emoji !== undefined) {
       obj.emoji = message.emoji;
     }
     if (message.isInTotalBalance !== false) {
@@ -260,7 +260,7 @@ export const BankAccount: MessageFns<BankAccount> = {
     message.balance = object.balance ?? 0;
     message.currency = object.currency ?? "";
     message.title = object.title ?? "";
-    message.emoji = object.emoji ?? "";
+    message.emoji = object.emoji ?? undefined;
     message.isInTotalBalance = object.isInTotalBalance ?? false;
     message.createdAt = object.createdAt ?? "";
     message.updatedAt = object.updatedAt ?? "";

@@ -17,7 +17,7 @@ message BankAccount {
   int64 balance = 2;
   string currency = 3;
   string title = 4;
-  string emoji = 5;
+  optional string emoji = 5;
   bool isInTotalBalance = 6;
   string createdAt = 7;
   string updatedAt = 8;
