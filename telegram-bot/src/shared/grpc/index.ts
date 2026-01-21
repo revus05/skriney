@@ -1,10 +1,10 @@
-import { Client, credentials } from '@grpc/grpc-js'
+import { Client, credentials, ChannelCredentials } from '@grpc/grpc-js'
 
 class RpcTransport {
   private readonly client: Client
 
-  constructor(address: string) {
-    this.client = new Client(address, credentials.createInsecure())
+  constructor(address: string, creds: ChannelCredentials) {
+    this.client = new Client(address, creds)
   }
 
   request(
@@ -30,4 +30,7 @@ class RpcTransport {
   }
 }
 
-export const rpc = new RpcTransport(process.env.GRPC_URL || '')
+export const rpc = new RpcTransport(
+  process.env.GRPC_URL || '',
+  credentials.createSsl(),
+)
