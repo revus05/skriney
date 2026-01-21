@@ -51,19 +51,26 @@ public class TransactionGrpcService extends TransactionServiceGrpc.TransactionSe
     BankAccountDTO bankAccount =
         bankAccountApplicationService.getOneBankAccount(user.getUuid(), transaction.getBankAccountUuid());
 
-    CreateTransactionResponse response =
-        CreateTransactionResponse.newBuilder()
-                .setTransactionUuid(transaction.getUuid())
-                .setAmount(transaction.getAmount().doubleValue())
-                .setCurrency(transaction.getCurrency().name())
-                .setCategoryEmoji(transaction.getCategory().getEmoji())
-                .setCategoryTitle(transaction.getCategory().getTitle())
-                .setCategoryUuid(transaction.getCategory().getUuid())
-                .setBankAccountEmoji(bankAccount.getEmoji())
-                .setBankAccountTitle(bankAccount.getTitle())
-                .setBankAccountUuid(bankAccount.getUuid())
-                .setBankAccountBalanceInUsd(bankAccount.getBalanceInUsd().doubleValue())
-                .build();
+    CreateTransactionResponse.Builder builder =
+            CreateTransactionResponse.newBuilder()
+                    .setTransactionUuid(transaction.getUuid())
+                    .setAmount(transaction.getAmount().doubleValue())
+                    .setCurrency(transaction.getCurrency().name())
+                    .setCategoryTitle(transaction.getCategory().getTitle())
+                    .setCategoryUuid(transaction.getCategory().getUuid())
+                    .setBankAccountTitle(bankAccount.getTitle())
+                    .setBankAccountUuid(bankAccount.getUuid())
+                    .setBankAccountBalanceInUsd(bankAccount.getBalanceInUsd().doubleValue());
+
+    if (transaction.getCategory().getEmoji() != null) {
+      builder.setCategoryEmoji(transaction.getCategory().getEmoji());
+    }
+
+    if (bankAccount.getEmoji() != null) {
+      builder.setBankAccountEmoji(bankAccount.getEmoji());
+    }
+
+    CreateTransactionResponse response = builder.build();
 
     responseObserver.onNext(response);
     responseObserver.onCompleted();

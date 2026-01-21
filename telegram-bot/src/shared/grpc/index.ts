@@ -32,5 +32,7 @@ class RpcTransport {
 
 export const rpc = new RpcTransport(
   process.env.GRPC_URL || '',
-  credentials.createSsl(),
+  process.env.NODE_ENV === 'production'
+    ? credentials.createSsl()
+    : credentials.createInsecure(),
 )

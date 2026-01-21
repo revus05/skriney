@@ -24,9 +24,9 @@ message CreateTransactionResponse {
   double bankAccountBalanceInUsd = 4;
   string categoryUuid = 5;
   string categoryTitle = 6;
-  string categoryEmoji = 7;
+  optional string categoryEmoji = 7;
   string bankAccountUuid = 8;
   string bankAccountTitle = 9;
-  string bankAccountEmoji = 10;
+  optional string bankAccountEmoji = 10;
   optional string description = 11;
 }
