@@ -1,2 +1,2 @@
 export { connectTelegram } from './model'
-export { getTelegramConnectedResponse } from './reply'
+export { getTelegramConnectionSuccessReply } from './reply/telegram-connection-success.ts'
