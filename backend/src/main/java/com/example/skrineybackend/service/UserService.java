@@ -5,15 +5,12 @@ import com.example.skrineybackend.dto.user.SignUpUserRequestDTO;
 import com.example.skrineybackend.dto.user.UpdateUserImageRequestDTO;
 import com.example.skrineybackend.dto.user.UserDTO;
 import com.example.skrineybackend.entity.User;
-import com.example.skrineybackend.exception.TelegramAlreadyLinkedException;
 import com.example.skrineybackend.exception.UnauthorizedException;
 import com.example.skrineybackend.exception.UserAlreadyExistsException;
 import com.example.skrineybackend.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -83,13 +80,6 @@ public class UserService {
   public String connectTelegram(long telegramId, String userUuid) throws UnauthorizedException {
     User user =
         userRepo.findById(userUuid).orElseThrow(() -> new UnauthorizedException("Не авторизован"));
-
-    Optional<User> optionalUserWithSameTelegramId = userRepo.findByTelegramId(telegramId);
-
-    if (optionalUserWithSameTelegramId.isPresent()) {
-      User userWithSameTelegramId = optionalUserWithSameTelegramId.get();
-      throw new TelegramAlreadyLinkedException(userWithSameTelegramId.getUsername());
-    }
 
     user.setTelegramId(telegramId);
 

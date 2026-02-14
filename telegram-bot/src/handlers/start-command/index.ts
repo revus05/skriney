@@ -1,11 +1,10 @@
 import { type Context } from 'bot/init'
 import { connectTelegram } from 'features/connect-telegram'
-import { getTelegramConnectionSuccessReply } from 'features/connect-telegram'
+import { getTelegramConnectedResponse } from 'features/connect-telegram'
 import { getUser } from 'features/user'
 import type { User } from '@prisma/client'
 import { createUser } from 'features/user'
 import { updateUser } from 'features/user'
-import { getTelegramConnectionFailureReply } from 'features/connect-telegram/reply/telegram-connection-failure.ts'
 
 export const handleStartCommand = async (ctx: Context) => {
   const telegramId = ctx.from?.id
@@ -27,11 +26,6 @@ export const handleStartCommand = async (ctx: Context) => {
       telegramId,
       userUuid,
     })
-
-    if (response.success) {
-      void ctx.reply(getTelegramConnectionSuccessReply(response.username))
-    } else {
-      void ctx.reply(getTelegramConnectionFailureReply(response.username))
-    }
+    void ctx.reply(getTelegramConnectedResponse(response.username))
   }
 }

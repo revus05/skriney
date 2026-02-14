@@ -26,7 +26,10 @@ export const PeriodSelect = () => {
       onValueChangeAction={handlePeriodChange}
       renderValue={(items) =>
         items.map((item) => (
-          <Translate key={item.key} value={`statistics.period.${item.key}`} />
+          <Translate
+            key={item.key}
+            value={`statistics.period.${String(item.key)}`}
+          />
         ))
       }
     >

@@ -1,2 +1,2 @@
-export const getTelegramConnectionSuccessReply = (username: string) =>
+export const getTelegramConnectedResponse = (username: string) =>
   `Телеграм-аккаунт успешно подключён к аккаунту ${username} ✅ Теперь можно добавлять транзакции прямо здесь`
