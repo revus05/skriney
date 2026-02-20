@@ -7,8 +7,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./telegram-bot/prisma/init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - "5432:5432"
 
   backend:
     build:
