@@ -1,3 +1,13 @@
+networks:
+  internal:
+    driver: bridge
+  external:
+    driver: bridge
+
+
+volumes:
+  postgres_data:
+
 services:
   postgres:
     image: postgres:17
@@ -7,6 +17,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./telegram-bot/prisma/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - internal
 
   backend:
     build:
@@ -17,9 +29,9 @@ services:
     env_file: ./backend/.env
     depends_on:
       - postgres
-    ports:
-      - "8080:8080"
-      - "9090:9090"
+    networks:
+      - internal
+      - external
 
   frontend:
     build:
@@ -30,9 +42,9 @@ services:
       - ./frontend/.env
     depends_on:
       - backend
-    ports:
-      - "3000:3000"
     restart: unless-stopped
+    networks:
+      - external
 
   telegram-bot:
     build:
@@ -44,6 +56,24 @@ services:
       - ./telegram-bot/.env
     depends_on:
       - postgres
+    networks:
+      - internal
+      - external
 
-volumes:
-  postgres_data:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - certbot_www:/var/www/certbot:ro
+    networks:
+      - external
+      - internal
+    depends_on:
+      - backend
+      - frontend
